@@ -1,16 +1,25 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import Barra from './Components/NavBar/Navbar'
-import Saludo from './Components/ItemListContainer/Saludo'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import NavBar from './Components/NavBar/Navbar'
+import ItemListContainer from './Components/ItemListContainer/ItemListContainer'
+import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer'
+
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 function App() {
   return (
-    <>
-    <Barra />
-    <Saludo saludo="Bienvenido/a!!"/>
-    </>
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+      <Route path='/' element={ <ItemListContainer /> } />
+      <Route path='/Categoria/:idCategoria' element={ <ItemListContainer /> } />
+      <Route path='/Detalles/:idProd' element={ <ItemDetailContainer /> } />
+      </Routes>
+      
+    </BrowserRouter>
   )
 }
 
